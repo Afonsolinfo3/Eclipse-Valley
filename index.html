@@ -1,0 +1,1388 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<title>Eclipse Valley</title>
+
+<script src="https://cdn.tailwindcss.com"></script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+html{
+scroll-behavior:smooth;
+}
+
+body{
+background:#050505;
+overflow-x:hidden;
+color:white;
+}
+
+/* BACKGROUND */
+
+.hero-bg{
+background:
+radial-gradient(circle at top,#3b2a12 0%,transparent 28%),
+radial-gradient(circle at bottom,#1a1207 0%,transparent 35%),
+#050505;
+}
+
+.grid-effect{
+background-image:
+linear-gradient(rgba(212,175,55,0.03) 1px, transparent 1px),
+linear-gradient(90deg, rgba(212,175,55,0.03) 1px, transparent 1px);
+background-size:40px 40px;
+}
+
+/* GLASS */
+
+.blur-bg{
+backdrop-filter:blur(16px);
+}
+
+/* GLOW */
+
+.gold-glow{
+box-shadow:0 0 40px rgba(212,175,55,.18);
+}
+
+.card-glow:hover{
+box-shadow:0 0 45px rgba(212,175,55,.12);
+}
+
+/* COLORS */
+
+.gold-gradient{
+background:linear-gradient(to right,#d4af37,#f6e27a,#c89b3c);
+}
+
+.gold-text{
+background:linear-gradient(to right,#f6e27a,#d4af37,#c89b3c);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+}
+
+.gold-border{
+border:1px solid rgba(212,175,55,.12);
+}
+
+/* HOVER */
+
+.soft-hover{
+transition:.35s ease;
+}
+
+.soft-hover:hover{
+transform:translateY(-8px);
+}
+
+/* LOGO */
+
+.logo-img{
+filter:
+brightness(1.15)
+contrast(1.05)
+drop-shadow(0 0 20px rgba(212,175,55,.15));
+opacity:.95;
+}
+
+/* BUTTON */
+
+.gold-button{
+background:linear-gradient(to right,#d4af37,#f6e27a,#c89b3c);
+color:#000;
+font-weight:700;
+transition:.35s ease;
+}
+
+.gold-button:hover{
+transform:scale(1.03);
+box-shadow:0 0 35px rgba(212,175,55,.28);
+}
+
+/* CARD */
+
+.product-card{
+background:linear-gradient(
+180deg,
+rgba(255,255,255,.02),
+rgba(255,255,255,.01)
+);
+}
+
+</style>
+
+</head>
+
+<body class="min-h-screen">
+
+<!-- HEADER -->
+
+<header class="fixed top-0 left-0 w-full z-50 border-b border-[#2a2112] bg-black/75 blur-bg">
+
+<div class="max-w-7xl mx-auto px-6 lg:px-8">
+
+<div class="flex items-center justify-between py-5">
+
+<div class="flex items-center gap-4">
+
+<img
+src="logo2.png"
+class="w-14 h-14 object-contain logo-img"
+/>
+
+<div>
+
+<h1 class="text-2xl font-black tracking-wide">
+Eclipse Valley
+</h1>
+
+<p class="text-zinc-500 text-sm">
+Loja Oficial FiveM
+</p>
+
+</div>
+
+</div>
+
+<nav class="hidden lg:flex items-center gap-4">
+
+<button
+onclick="document.getElementById('inicio').scrollIntoView({behavior:'smooth'})"
+class="px-6 py-3 rounded-2xl gold-border hover:border-yellow-600 transition-all duration-300 hover:bg-[#1a1408]"
+>
+Início
+</button>
+
+<button
+onclick="document.getElementById('vips').scrollIntoView({behavior:'smooth'})"
+class="px-6 py-3 rounded-2xl gold-border hover:border-yellow-600 transition-all duration-300 hover:bg-[#1a1408]"
+>
+VIPs
+</button>
+
+<button
+onclick="document.getElementById('extras').scrollIntoView({behavior:'smooth'})"
+class="px-6 py-3 rounded-2xl gold-border hover:border-yellow-600 transition-all duration-300 hover:bg-[#1a1408]"
+>
+Extras
+</button>
+
+<button
+onclick="document.getElementById('mansoes').scrollIntoView({behavior:'smooth'})"
+class="px-6 py-3 rounded-2xl gold-border hover:border-yellow-600 transition-all duration-300 hover:bg-[#1a1408]"
+>
+Mansões
+</button>
+<button
+onclick="document.getElementById('carros').scrollIntoView({behavior:'smooth'})"
+class="px-6 py-3 rounded-2xl gold-border hover:border-yellow-600 transition-all duration-300 hover:bg-[#1a1408]"
+>
+Carros
+</button>
+
+<button
+onclick="window.open('https://discord.gg/92c9KYz3wU')"
+class="px-6 py-3 rounded-2xl gold-border hover:border-yellow-600 transition-all duration-300 hover:bg-[#1a1408]"
+>
+Discord
+</button>
+
+<!-- SUBSTITUA APENAS O BOTÃO LOGIN POR ESSE -->
+
+<button
+onclick="openLoginModal()"
+id="loginBtn"
+class="px-6 py-3 rounded-2xl gold-button gold-glow"
+>
+Login
+</button>
+
+<!-- COLE ISSO ANTES DO </body> -->
+
+<!-- MODAL LOGIN -->
+
+<div
+id="loginModal"
+class="fixed inset-0 bg-black/80 z-[9999] hidden items-center justify-center p-6"
+>
+
+<div class="w-full max-w-lg bg-[#0b0b0b] border border-[#2f2413] rounded-[32px] p-8 relative">
+
+<button
+onclick="closeLoginModal()"
+class="absolute top-5 right-5 text-zinc-500 hover:text-white text-2xl"
+>
+×
+</button>
+
+<h2 class="text-4xl font-black mb-3 gold-text">
+Login da Loja
+</h2>
+
+<p class="text-zinc-500 mb-8 leading-relaxed">
+Preencha corretamente suas informações antes de realizar qualquer compra.
+<br><br>
+<span class="text-red-400 font-semibold">
+ATENÇÃO:
+</span>
+Caso o ID do game ou Discord estejam errados, os produtos podem ser entregues para outra pessoa e não haverá reembolso.
+</p>
+
+<div class="space-y-5">
+
+<div>
+<label class="block text-sm text-zinc-400 mb-2">
+Nome
+</label>
+
+<input
+type="text"
+id="userName"
+placeholder="Digite seu nome"
+class="w-full bg-[#111] border border-[#2a2112] rounded-2xl px-5 py-4 outline-none focus:border-yellow-600 transition"
+/>
+</div>
+
+<div>
+<label class="block text-sm text-zinc-400 mb-2">
+Discord
+</label>
+
+<input
+type="text"
+id="userDiscord"
+placeholder="Ex: usuario#0001"
+class="w-full bg-[#111] border border-[#2a2112] rounded-2xl px-5 py-4 outline-none focus:border-yellow-600 transition"
+/>
+</div>
+
+<div>
+<label class="block text-sm text-zinc-400 mb-2">
+ID do Game
+</label>
+
+<input
+type="text"
+id="userGameId"
+placeholder="Digite seu ID"
+class="w-full bg-[#111] border border-[#2a2112] rounded-2xl px-5 py-4 outline-none focus:border-yellow-600 transition"
+/>
+</div>
+
+<button
+onclick="saveLogin()"
+class="w-full py-5 rounded-2xl gold-button text-lg gold-glow mt-4"
+>
+Salvar Informações
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+<script>
+
+function openLoginModal(){
+document.getElementById('loginModal').classList.remove('hidden');
+document.getElementById('loginModal').classList.add('flex');
+}
+
+function closeLoginModal(){
+document.getElementById('loginModal').classList.remove('flex');
+document.getElementById('loginModal').classList.add('hidden');
+}
+
+function saveLogin(){
+
+const name = document.getElementById('userName').value;
+const discord = document.getElementById('userDiscord').value;
+const gameId = document.getElementById('userGameId').value;
+
+if(!name || !discord || !gameId){
+
+alert('Preencha todos os campos.');
+
+return;
+
+}
+
+const userData = {
+name,
+discord,
+gameId
+};
+
+localStorage.setItem('eclipseUser', JSON.stringify(userData));
+
+document.getElementById('loginBtn').innerHTML = name;
+
+closeLoginModal();
+
+alert('Informações salvas com sucesso!');
+
+}
+
+window.onload = () => {
+
+const user = JSON.parse(localStorage.getItem('eclipseUser'));
+
+if(user){
+
+document.getElementById('loginBtn').innerHTML = user.name;
+
+}
+
+}
+
+
+function buyProduct(product,price,link){
+
+const user = JSON.parse(localStorage.getItem('eclipseUser'));
+
+if(!user){
+
+alert('Faça login antes de comprar.');
+
+openLoginModal();
+
+return;
+
+}
+
+/*
+
+========================================
+WEBHOOK DISCORD
+========================================
+
+TROQUE O LINK ABAIXO PELO SEU WEBHOOK
+
+*/
+
+fetch('https://discord.com/api/webhooks/1503614219851923557/feGBiiQh8ldTRlBLEuBxBIx5GOE6D6u4G2qYj0VMDCANayx8BtI5sWtihsQqjOuKFZYU',{
+
+method:'POST',
+
+headers:{
+'Content-Type':'application/json'
+},
+
+body:JSON.stringify({
+
+embeds:[{
+
+title:'🛒 Nova Compra',
+
+color:15844367,
+
+fields:[
+
+{
+name:'👤 Nome',
+value:user.name,
+inline:false
+},
+
+{
+name:'💬 Discord',
+value:user.discord,
+inline:false
+},
+
+{
+name:'🆔 ID Game',
+value:user.gameId,
+inline:false
+},
+
+{
+name:'📦 Produto',
+value:product,
+inline:true
+},
+
+{
+name:'💰 Valor',
+value:'R$ '+price,
+inline:true
+}
+
+],
+
+footer:{
+text:'Eclipse Valley Store'
+}
+
+}]
+
+})
+
+})
+
+window.open(link,'_blank');
+
+}
+
+</script>
+
+</nav>
+
+</div>
+
+</div>
+
+</header>
+
+<!-- HERO -->
+
+<section id="inicio" class="relative hero-bg grid-effect overflow-hidden">
+
+<div class="absolute top-[-200px] left-1/2 -translate-x-1/2 w-[700px] h-[700px] bg-yellow-500/10 rounded-full blur-3xl"></div>
+
+<div class="relative max-w-7xl mx-auto px-6 lg:px-8 pt-52 pb-40">
+
+<div class="max-w-5xl mx-auto text-center">
+
+<div class="inline-flex items-center gap-3 border border-[#3d2f18] bg-[#120d05] rounded-full px-6 py-3 mb-10">
+
+<div class="w-2 h-2 rounded-full bg-yellow-400 animate-pulse"></div>
+
+<span class="text-yellow-200 font-medium text-sm tracking-wide">
+LOJA PREMIUM • PAGAMENTO VIA PIX
+</span>
+
+</div>
+
+<div class="flex justify-center mb-10">
+
+<img
+src="logo.png"
+class="w-72 md:w-[420px] object-contain logo-img"
+/>
+
+</div>
+
+<h1 class="text-5xl md:text-7xl lg:text-8xl font-black leading-tight mb-8">
+
+ECLIPSE
+
+<span class="gold-text">
+VALLEY
+</span>
+
+</h1>
+
+<p class="text-zinc-400 text-lg md:text-xl leading-relaxed max-w-3xl mx-auto mb-12">
+
+Compre VIPs, moedas, veículos exclusivos e benefícios premium para elevar sua experiência dentro da cidade.
+
+</p>
+
+<div class="flex flex-col sm:flex-row items-center justify-center gap-5">
+
+<button
+onclick="document.getElementById('vips').scrollIntoView({behavior:'smooth'})"
+class="px-10 py-5 rounded-2xl gold-button gold-glow text-lg w-full sm:w-auto"
+>
+
+Comprar VIP
+
+</button>
+
+<button
+onclick="window.open('https://discord.gg/92c9KYz3wU')"
+class="px-10 py-5 rounded-2xl gold-border hover:border-yellow-600 hover:bg-[#1a1408] transition-all duration-300 text-lg font-semibold w-full sm:w-auto"
+>
+
+Entrar no Discord
+
+</button>
+
+</div>
+
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-20">
+
+<div class="bg-[#0c0c0c] gold-border rounded-3xl p-8">
+
+<h3 class="text-4xl font-black text-yellow-300 mb-2">
+24/7
+</h3>
+
+<p class="text-zinc-500">
+Entrega automática de VIPs
+</p>
+
+</div>
+
+<div class="bg-[#0c0c0c] gold-border rounded-3xl p-8">
+
+<h3 class="text-4xl font-black text-yellow-300 mb-2">
+PIX
+</h3>
+
+<p class="text-zinc-500">
+Pagamento rápido e seguro
+</p>
+
+</div>
+
+<div class="bg-[#0c0c0c] gold-border rounded-3xl p-8">
+
+<h3 class="text-4xl font-black text-yellow-300 mb-2">
+100%
+</h3>
+
+<p class="text-zinc-500">
+Sistema automatizado
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- VIPS -->
+
+<section id="vips" class="max-w-7xl mx-auto px-6 lg:px-8 py-28">
+
+<div class="text-center mb-20">
+
+<h2 class="text-5xl lg:text-6xl font-black mb-5">
+VIPs Premium
+</h2>
+
+<p class="text-zinc-500 text-lg max-w-2xl mx-auto">
+Escolha o VIP ideal para evoluir sua experiência dentro da cidade.
+</p>
+
+</div>
+
+<div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-10">
+
+<!-- VIP BRONZE -->
+
+<div class="product-card gold-border rounded-[32px] overflow-hidden hover:border-yellow-600 soft-hover card-glow">
+
+<div class="relative overflow-hidden">
+
+<img
+src="https://media.discordapp.net/attachments/1404980419103031405/1503623074669395999/image.png?ex=6a04059c&is=6a02b41c&hm=83dc724ee546c2ccc0cdd46ac6a4375bfd4e94ab9f36557b5f3f186e8c5ffe84&=&format=webp&quality=lossless&width=388&height=302"
+class="w-full h-80 object-cover hover:scale-110 transition duration-700"
+/>
+
+<div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
+
+<div class="absolute top-5 left-5 gold-gradient text-black text-sm font-bold px-5 py-2 rounded-full shadow-2xl">
+VIP
+</div>
+
+</div>
+
+<div class="p-8">
+
+<div class="flex items-center justify-between mb-6">
+
+<h3 class="text-3xl font-black">
+VIP Bronze
+</h3>
+
+<span class="text-yellow-300 text-3xl font-black">
+R$ 19,90
+</span>
+
+</div>
+
+<p class="text-zinc-500 mb-8">
+VIP básico para iniciar sua jornada premium.
+</p>
+
+<button
+onclick="buyProduct('VIP Bronze','12.99','https://pag.ae/81MyTzFcM')"
+class="w-full py-5 rounded-2xl gold-button text-lg gold-glow"
+>
+Comprar Agora
+</button>
+
+</div> 
+
+</div>
+
+<!-- VIP GOLD -->
+
+<div class="product-card gold-border rounded-[32px] overflow-hidden hover:border-yellow-600 soft-hover card-glow">
+
+<div class="relative overflow-hidden">
+
+<img
+src="https://media.discordapp.net/attachments/1404980419103031405/1503623139530375228/image.png?ex=6a0405ac&is=6a02b42c&hm=0a77b3b69be2cd757bd285a99da225b92925ecb890f0d77a3d8e1c604a29cc3d&=&format=webp&quality=lossless&width=395&height=299"
+class="w-full h-80 object-cover hover:scale-110 transition duration-700"
+/>
+
+<div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
+
+<div class="absolute top-5 left-5 gold-gradient text-black text-sm font-bold px-5 py-2 rounded-full shadow-2xl">
+VIP
+</div>
+
+</div>
+
+<div class="p-8">
+
+<div class="flex items-center justify-between mb-6">
+
+<h3 class="text-3xl font-black">
+VIP Gold
+</h3>
+
+<span class="text-yellow-300 text-3xl font-black">
+R$ 49,90
+</span>
+
+</div>
+
+<p class="text-zinc-500 mb-8">
+Benefícios premium e recompensas exclusivas.
+</p>
+
+<button
+onclick="buyProduct('VIP Gold','25.99','https://pag.ae/81My_FyS6')"
+class="w-full py-5 rounded-2xl gold-button text-lg gold-glow"
+>
+Comprar Agora
+</button>
+
+</div>
+
+</div>
+
+<!-- VIP PLATINUM -->
+
+<div class="product-card gold-border rounded-[32px] overflow-hidden hover:border-yellow-600 soft-hover card-glow">
+
+<div class="relative overflow-hidden">
+
+<img
+src="https://media.discordapp.net/attachments/1404980419103031405/1503623200918208582/image.png?ex=6a0405bb&is=6a02b43b&hm=47030a029ae9c68493c08494e37bb164caf73c5ef9f37410a176a181951e2282&=&format=webp&quality=lossless&width=383&height=310"
+class="w-full h-80 object-cover hover:scale-110 transition duration-700"
+/>
+
+<div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
+
+<div class="absolute top-5 left-5 gold-gradient text-black text-sm font-bold px-5 py-2 rounded-full shadow-2xl">
+VIP
+</div>
+
+</div>
+
+<div class="p-8">
+
+<div class="flex items-center justify-between mb-6">
+
+<h3 class="text-3xl font-black">
+VIP Platinum
+</h3>
+
+<span class="text-yellow-300 text-3xl font-black">
+R$ 99,90
+</span>
+
+</div>
+
+<p class="text-zinc-500 mb-8">
+O VIP mais completo da Eclipse Valley.
+</p>
+
+<button
+onclick="buyProduct('VIP Prata','39.99','https://pag.ae/81Mz1G_G6')"
+class="w-full py-5 rounded-2xl gold-button text-lg gold-glow"
+>
+Comprar Agora
+</button>
+
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- EXTRAS -->
+
+<section id="extras" class="max-w-7xl mx-auto px-6 lg:px-8 pb-28">
+
+<div class="text-center mb-20">
+
+<h2 class="text-5xl lg:text-6xl font-black mb-5 gold-text">
+Extras Exclusivos
+</h2>
+
+<p class="text-zinc-500 text-lg max-w-2xl mx-auto">
+organizações e itens especiais disponíveis na loja oficial.
+</p>
+
+</div>
+
+<div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-10">
+
+<!-- CARRO
+
+<div class="product-card gold-border rounded-[32px] overflow-hidden hover:border-yellow-600 soft-hover card-glow">
+
+<div class="relative overflow-hidden">
+
+<img
+src="https://media.discordapp.net/attachments/1396268785022795786/1398431656922316810/6.png?ex=6a03a978&is=6a0257f8&hm=a99a895237e3a5f606fb2e5593f0c8231c8284172306aa046185f63cea362f9c&=&format=webp&quality=lossless&width=1438&height=809"
+class="w-full h-80 object-cover hover:scale-110 transition duration-700"
+/>
+
+<div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
+
+<div class="absolute top-5 left-5 gold-gradient text-black text-sm font-bold px-5 py-2 rounded-full shadow-2xl">
+CARRO
+</div>
+
+</div>
+
+<div class="p-8">
+
+<div class="flex items-center justify-between mb-6">
+
+<h3 class="text-3xl font-black">
+Lamborghini
+</h3>
+
+<span class="text-yellow-300 text-3xl font-black">
+R$ 79,90
+</span>
+
+</div>
+
+<p class="text-zinc-500 mb-8">
+Veículo exclusivo desbloqueado automaticamente.
+</p>
+
+<button
+onclick="buyProduct('Lamborghini','79,90','link')"
+class="w-full py-5 rounded-2xl gold-button text-lg gold-glow"
+>
+Comprar Agora
+</button>
+
+</div>
+
+</div> -->
+
+<!-- ORG -->
+
+<div class="product-card gold-border rounded-[32px] overflow-hidden hover:border-yellow-600 soft-hover card-glow">
+
+<div class="relative overflow-hidden">
+
+<img
+src="https://media.discordapp.net/attachments/1404980419103031405/1503624542562816030/ChatGPT_Image_12_de_mai._de_2026_02_06_55.png?ex=6a0406fa&is=6a02b57a&hm=709e2fedb90b934da738cefaad638ff81f42a6d77ac757b9021a3496dff65c78&=&format=webp&quality=lossless&width=1267&height=845"
+class="w-full h-80 object-cover hover:scale-110 transition duration-700"
+/>
+
+<div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
+
+<div class="absolute top-5 left-5 gold-gradient text-black text-sm font-bold px-5 py-2 rounded-full shadow-2xl">
+ORG
+</div>
+
+</div>
+
+<div class="p-8">
+
+<div class="flex items-center justify-between mb-6">
+
+<h3 class="text-3xl font-black">
+Organização
+</h3>
+
+<span class="text-yellow-300 text-3xl font-black">
+R$ 149,90
+</span>
+
+</div>
+
+<p class="text-zinc-500 mb-8">
+Crie sua própria organização dentro da cidade.
+</p>
+
+<button
+onclick="buyProduct('Criar ORG','149.99','link')"
+class="w-full py-5 rounded-2xl gold-button text-lg gold-glow"
+>
+Comprar Agora
+</button>
+
+</div>
+
+</div>
+
+<!-- COINS -->
+
+<div class="product-card gold-border rounded-[32px] overflow-hidden hover:border-yellow-600 soft-hover card-glow">
+
+<div class="relative overflow-hidden">
+
+<img
+src="https://media.discordapp.net/attachments/1404980419103031405/1503626560870027295/ChatGPT_Image_19_de_abr._de_2026_07_10_31.png?ex=6a0408dc&is=6a02b75c&hm=1aad493f7e4d5a42b04bb4dc1da5f374ef5347eb838f3d0875a9f37f175e4010&=&format=webp&quality=lossless&width=934&height=934"
+class="w-full h-80 object-cover hover:scale-110 transition duration-700"
+/>
+
+<div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
+
+<div class="absolute top-5 left-5 gold-gradient text-black text-sm font-bold px-5 py-2 rounded-full shadow-2xl">
+COINS
+</div>
+
+</div>
+
+<div class="p-8">
+
+<div class="flex items-center justify-between mb-6">
+
+<h3 class="text-3xl font-black">
+60 Coins
+</h3>
+
+<span class="text-yellow-300 text-3xl font-black">
+R$ 59,90
+</span>
+
+</div>
+
+<p class="text-zinc-500 mb-8">
+Pacote de moedas premium para usar na cidade.
+</p>
+
+<button
+onclick="buyProduct('LosCoins','59.99','link')"
+class="w-full py-5 rounded-2xl gold-button text-lg gold-glow"
+>
+Comprar Agora
+</button>
+
+</div>
+
+</div>
+
+<!-- ITEM VIP -->
+
+<div class="product-card gold-border rounded-[32px] overflow-hidden hover:border-yellow-600 soft-hover card-glow">
+
+<div class="relative overflow-hidden">
+
+<img
+src="https://media.discordapp.net/attachments/1404980419103031405/1503628121306435646/image.png?ex=6a040a50&is=6a02b8d0&hm=e01fc9bf498b8d0c457e2f5a1583d33c203ccaf1566944f2c7fcaff5bb622cd5&=&format=webp&quality=lossless&width=1267&height=844"
+class="w-full h-80 object-cover hover:scale-110 transition duration-700"
+/>
+
+<div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
+
+<div class="absolute top-5 left-5 gold-gradient text-black text-sm font-bold px-5 py-2 rounded-full shadow-2xl">
+ITEM
+</div>
+
+</div>
+
+<div class="p-8">
+
+<div class="flex items-center justify-between mb-6">
+
+<h3 class="text-3xl font-black">
+Cirurgia
+</h3>
+
+<span class="text-yellow-300 text-3xl font-black">
+R$ 24,90
+</span>
+
+</div>
+
+<p class="text-zinc-500 mb-8">
+Itens raros e exclusivos para sua conta.
+</p>
+
+<button
+onclick="buyProduct('Cirurgia','24.90','link')"
+class="w-full py-5 rounded-2xl gold-button text-lg gold-glow"
+>
+Comprar Agora
+</button>
+
+</div>
+
+</div>
+
+<!-- GARAGEM -->
+
+<div class="product-card gold-border rounded-[32px] overflow-hidden hover:border-yellow-600 soft-hover card-glow">
+
+<div class="relative overflow-hidden">
+
+<img
+src="https://media.discordapp.net/attachments/1404980419103031405/1503626364551430254/image.png?ex=6a0408ad&is=6a02b72d&hm=9d79e82adf3d6b1a37f969d74f3dc816b0c157825fa55d265bdf9d9e3af8ddd2&=&format=webp&quality=lossless&width=1267&height=847"
+class="w-full h-80 object-cover hover:scale-110 transition duration-700"
+/>
+
+<div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
+
+<div class="absolute top-5 left-5 gold-gradient text-black text-sm font-bold px-5 py-2 rounded-full shadow-2xl">
+GARAGEM
+</div>
+
+</div>
+
+<div class="p-8">
+
+<div class="flex items-center justify-between mb-6">
+
+<h3 class="text-3xl font-black">
+Garagem Premium
+</h3>
+
+<span class="text-yellow-300 text-3xl font-black">
+R$ 89,90
+</span>
+
+</div>
+
+<p class="text-zinc-500 mb-8">
+Desbloqueie slots e veículos exclusivos.
+</p>
+
+<button
+onclick="buyProduct('Garagem','89,90','link')"
+class="w-full py-5 rounded-2xl gold-button text-lg gold-glow"
+>
+Comprar Agora
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- MANSÕES -->
+
+<section id="mansoes" class="max-w-7xl mx-auto px-6 lg:px-8 pb-28">
+
+<div class="text-center mb-20">
+
+<h2 class="text-5xl lg:text-6xl font-black mb-5 gold-text">
+Mansões Exclusivas
+</h2>
+
+<p class="text-zinc-500 text-lg max-w-2xl mx-auto">
+Escolha sua mansão premium dentro da Eclipse Valley.
+</p>
+
+</div>
+
+<div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-10">
+
+<!-- MANSÃO 1 -->
+
+<div class="product-card gold-border rounded-[32px] overflow-hidden hover:border-yellow-600 soft-hover card-glow">
+
+<div class="relative overflow-hidden">
+
+<img
+src="https://media.discordapp.net/attachments/1404980419103031405/1503640642578939934/m1.png?ex=6a0415f9&is=6a02c479&hm=d0ec8d5f7af8eca3093b2b65f9920535fd13269b97bf30b9a7c887902ed3a073&=&format=webp&quality=lossless&width=1436&height=808"
+class="w-full h-80 object-cover hover:scale-110 transition duration-700"
+/>
+
+<div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
+
+<div class="absolute top-5 left-5 gold-gradient text-black text-sm font-bold px-5 py-2 rounded-full shadow-2xl">
+MANSÃO
+</div>
+
+</div>
+
+<div class="p-8">
+
+<div class="flex items-center justify-between mb-6">
+
+<h3 class="text-3xl font-black">
+Mansão Premium
+</h3>
+
+<span class="text-yellow-300 text-3xl font-black">
+R$ 499,90
+</span>
+
+</div>
+
+<p class="text-zinc-500 mb-8">
+Adquira uma mansão exclusiva dentro da cidade.
+Disponivel até o Wipe.
+</p>
+
+<button
+onclick="buyProduct('Mansão Premium','499.90','https://pag.ae/81MzsXejt')"
+class="w-full py-5 rounded-2xl gold-button text-lg gold-glow"
+>
+Comprar Agora
+</button>
+
+</div>
+
+</div>
+
+<!-- MANSÃO 2 -->
+
+<div class="product-card gold-border rounded-[32px] overflow-hidden hover:border-yellow-600 soft-hover card-glow">
+
+<div class="relative overflow-hidden">
+
+<img
+src="https://media.discordapp.net/attachments/1404980419103031405/1503640642142605372/m2.png?ex=6a0415f9&is=6a02c479&hm=41e73527f41ef4bc4bd2031917419340329cdeb4dd4b98fb2adce8e6a082781a&=&format=webp&quality=lossless&width=1436&height=809"
+class="w-full h-80 object-cover hover:scale-110 transition duration-700"
+/>
+
+<div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
+
+<div class="absolute top-5 left-5 gold-gradient text-black text-sm font-bold px-5 py-2 rounded-full shadow-2xl">
+MANSÃO
+</div>
+
+</div>
+
+<div class="p-8">
+
+<div class="flex items-center justify-between mb-6">
+
+<h3 class="text-3xl font-black">
+Mansão Sunset
+</h3>
+
+<span class="text-yellow-300 text-3xl font-black">
+R$ 349,90
+</span>
+
+</div>
+
+<p class="text-zinc-500 mb-8">
+Vista exclusiva e garagem premium.
+Disponivel até o Wipe.
+</p>
+
+<button
+onclick="buyProduct('Mansão Sunset','349,90','https://pag.ae/81MztoFHM')"
+class="w-full py-5 rounded-2xl gold-button text-lg gold-glow"
+>
+Comprar Agora
+</button>
+
+</div>
+
+</div>
+
+<!-- MANSÃO 3 -->
+
+<div class="product-card gold-border rounded-[32px] overflow-hidden hover:border-yellow-600 soft-hover card-glow">
+
+<div class="relative overflow-hidden">
+
+<img
+src="https://media.discordapp.net/attachments/1404980419103031405/1503640641589088348/cabana.png?ex=6a0415f9&is=6a02c479&hm=d7e2a038f658102b0b4f9cff8fb97c801c45ade07b2eda13d3e0147da7a90ce3&=&format=webp&quality=lossless&width=1436&height=808"
+class="w-full h-80 object-cover hover:scale-110 transition duration-700"
+/>
+
+<div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
+
+<div class="absolute top-5 left-5 gold-gradient text-black text-sm font-bold px-5 py-2 rounded-full shadow-2xl">
+CABANA
+</div>
+
+</div>
+
+<div class="p-8">
+
+<div class="flex items-center justify-between mb-6">
+
+<h3 class="text-3xl font-black">
+Cabana na Floresta
+</h3>
+
+<span class="text-yellow-300 text-3xl font-black">
+R$ 998.99
+</span>
+
+</div>
+
+<p class="text-zinc-500 mb-8">
+A casa mais luxuosa da cidade.
+Disponivel até o Wipe.
+</p>
+
+<button
+onclick="buyProduct('Cabana na Floresta','998.99','https://pag.ae/81MztLkb8')"
+class="w-full py-5 rounded-2xl gold-button text-lg gold-glow"
+>
+Comprar Agora
+</button>
+</div>
+
+</div>
+
+</div>
+
+</section>
+<!-- CARROS -->
+
+<section id="carros" class="max-w-7xl mx-auto px-6 lg:px-8 pb-28">
+
+<div class="text-center mb-20">
+
+<h2 class="text-5xl lg:text-6xl font-black mb-5 gold-text">
+Carros Exclusivos
+</h2>
+
+<p class="text-zinc-500 text-lg max-w-2xl mx-auto">
+Escolha seu carro VIP dentro da Eclipse Valley.
+</p>
+
+</div>
+
+<div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-10">
+
+<!-- Carro 1 -->
+
+<div class="product-card gold-border rounded-[32px] overflow-hidden hover:border-yellow-600 soft-hover card-glow">
+
+<div class="relative overflow-hidden">
+
+<img
+src="https://media.discordapp.net/attachments/1396268785022795786/1399869756881899540/1.png?ex=6a039ece&is=6a024d4e&hm=2d10f040b620057851e815f807b5fefec8d7480213bac2c022c7271a4bcc55a5&=&format=webp&quality=lossless&width=1144&height=709"
+class="w-full h-80 object-cover hover:scale-110 transition duration-700"
+/>
+
+<div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
+
+<div class="absolute top-5 left-5 gold-gradient text-black text-sm font-bold px-5 py-2 rounded-full shadow-2xl">
+CARRO
+</div>
+
+</div>
+
+<div class="p-8">
+
+<div class="flex items-center justify-between mb-6">
+
+<h3 class="text-3xl font-black">
+Blindado PREMIUM
+</h3>
+
+<span class="text-yellow-300 text-3xl font-black">
+R$ 129,90
+</span>
+
+</div>
+
+<p class="text-zinc-500 mb-8">
+Carro FULL Blindado.
+Resistente a 2 EXPLOSÕES.
+Dura até wipe!
+</p>
+
+<button
+onclick="buyProduct('Full Blindado','129.90','https://pag.ae/81Mzucd9r')"
+class="w-full py-5 rounded-2xl gold-button text-lg gold-glow"
+>
+Comprar Agora
+</button>
+
+</div>
+
+</div>
+
+<!-- carro 2 -->
+
+<div class="product-card gold-border rounded-[32px] overflow-hidden hover:border-yellow-600 soft-hover card-glow">
+
+<div class="relative overflow-hidden">
+
+<img
+src="https://media.discordapp.net/attachments/1058875521947152574/1427886726596268142/FiveM_by_Cfx.re_-_NIKITO_COMMUNITY_14_10_2025_23_34_59.png?ex=6a040824&is=6a02b6a4&hm=52a93411c6ce9734fe39b20a62e14587d4af02f936b2eace968510aecc08954b&=&format=webp&quality=lossless&width=1238&height=697"
+class="w-full h-80 object-cover hover:scale-110 transition duration-700"
+/>
+
+<div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
+
+<div class="absolute top-5 left-5 gold-gradient text-black text-sm font-bold px-5 py-2 rounded-full shadow-2xl">
+CARRO
+</div>
+
+</div>
+
+<div class="p-8">
+
+<div class="flex items-center justify-between mb-6">
+
+<h3 class="text-3xl font-black">
+Lamborghini Aventador
+</h3>
+
+<span class="text-yellow-300 text-3xl font-black">
+R$ 149,90
+</span>
+
+</div>
+
+<p class="text-zinc-500 mb-8">
+Rápida e blindada.
+Disponivel até o wipe.
+</p>
+
+<button
+onclick="buyProduct('Lamborghini Aventador','149.90','https://pag.ae/81Mzuvnr8')"
+class="w-full py-5 rounded-2xl gold-button text-lg gold-glow"
+>
+Comprar Agora
+</button>
+
+</div>
+
+</div>
+
+<!-- carro 3 -->
+
+<div class="product-card gold-border rounded-[32px] overflow-hidden hover:border-yellow-600 soft-hover card-glow">
+
+<div class="relative overflow-hidden">
+
+<img
+src="https://media.discordapp.net/attachments/1058875521947152574/1313484545429078046/GTA5_2024-03-26_09-20-05.png?ex=6a03c80e&is=6a02768e&hm=9c891f3d1de6fd85a538d33590bcdf718c7d37ca0d0308031dde942b81d259a1&=&format=webp&quality=lossless&width=1668&height=697"
+class="w-full h-80 object-cover hover:scale-110 transition duration-700"
+/>
+
+<div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
+
+<div class="absolute top-5 left-5 gold-gradient text-black text-sm font-bold px-5 py-2 rounded-full shadow-2xl">
+CARRO
+</div>
+
+</div>
+
+<div class="p-8">
+
+<div class="flex items-center justify-between mb-6">
+
+<h3 class="text-3xl font-black">
+Nissan Skyline GTR
+</h3>
+
+<span class="text-yellow-300 text-3xl font-black">
+R$ 199,90
+</span>
+
+</div>
+
+<p class="text-zinc-500 mb-8">
+O carro VELOZ E EFICAZ.
+Disponivel até o wipe.
+</p>
+
+<button
+onclick="buyProduct('Nissan Skyline GTR','199.90','https://pag.ae/81MzuVQ66')"
+class="w-full py-5 rounded-2xl gold-button text-lg gold-glow"
+>
+Comprar Agora
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- FOOTER -->
+
+<footer class="border-t border-[#2a2112] bg-black py-14 mt-10">
+
+<div class="max-w-7xl mx-auto px-6 lg:px-10">
+
+<div class="flex flex-col lg:flex-row items-center justify-between gap-8">
+
+<div class="flex items-center gap-4">
+
+<img
+src="logo2.png"
+class="w-20 h-20 object-contain logo-img"
+/>
+
+<div>
+
+<h2 class="text-2xl font-black">
+Eclipse Valley
+</h2>
+
+<p class="text-zinc-500">
+© 2026 • Todos os direitos reservados
+</p>
+
+</div>
+
+</div>
+
+<div class="flex items-center gap-5">
+
+<button
+onclick="window.open('https://discord.gg/92c9KYz3wU')"
+class="px-6 py-3 rounded-2xl gold-border hover:border-yellow-600 transition-all duration-300 hover:bg-[#1a1408]"
+>
+Discord
+</button>
+
+<button
+onclick="window.open('https://discord.gg/yVp5GGFu8x')"
+class="px-6 py-3 rounded-2xl gold-border hover:border-yellow-600 transition-all duration-300 hover:bg-[#1a1408]"
+>
+Suporte
+</button>
+
+
+</div>
+
+</div>
+
+</div>
+
+</footer>
+
+</body>
+</html>
