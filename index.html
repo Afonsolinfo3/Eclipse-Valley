@@ -254,7 +254,7 @@ Nome
 <input
 type="text"
 id="userName"
-placeholder="Digite seu nome"
+placeholder="Nome Verdadeiro"
 class="w-full bg-[#111] border border-[#2a2112] rounded-2xl px-5 py-4 outline-none focus:border-yellow-600 transition"
 />
 </div>
@@ -581,7 +581,53 @@ Escolha o VIP ideal para evoluir sua experiência dentro da cidade.
 </div>
 
 <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-10">
+<!-- Acess Antecipado -->
 
+<div class="product-card gold-border rounded-[32px] overflow-hidden hover:border-yellow-600 soft-hover card-glow">
+
+<div class="relative overflow-hidden">
+
+<img
+src="antecipado.png"
+class="w-full h-80 object-cover hover:scale-110 transition duration-700"
+/>
+
+<div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
+
+<div class="absolute top-5 left-5 gold-gradient text-black text-sm font-bold px-5 py-2 rounded-full shadow-2xl">
+VIP
+</div>
+
+</div>
+
+<div class="p-8">
+
+<div class="flex items-center justify-between mb-6">
+
+<h3 class="text-3xl font-black">
+Acesso Antecipado.
+</h3>
+
+<span class="text-yellow-300 text-3xl font-black">
+R$ 49.90
+</span>
+
+</div>
+
+<p class="text-zinc-500 mb-8">
+Seja o primeiro de todos a viver uma experiência ÚNICA!
+</p>
+
+<button
+onclick="buyProduct('acesso','49.90','https://pag.ae/81MT4gH4p')"
+class="w-full py-5 rounded-2xl gold-button text-lg gold-glow"
+>
+Comprar Agora
+</button>
+
+</div>
+
+</div>
 <!-- VIP BRONZE -->
 
 <div class="product-card gold-border rounded-[32px] overflow-hidden hover:border-yellow-600 soft-hover card-glow">
@@ -821,7 +867,7 @@ ORG
 <div class="flex items-center justify-between mb-6">
 
 <h3 class="text-3xl font-black">
-Organização
+Criar Organização
 </h3>
 
 <span class="text-yellow-300 text-3xl font-black">
@@ -835,7 +881,7 @@ Crie sua própria organização dentro da cidade.
 </p>
 
 <button
-onclick="buyProduct('Criar ORG','149.99','link')"
+onclick="buyProduct('Criar ORG','149.99','https://pag.ae/81MT4LoYK')"
 class="w-full py-5 rounded-2xl gold-button text-lg gold-glow"
 >
 Comprar Agora
@@ -883,7 +929,7 @@ Pacote de moedas premium para usar na cidade.
 </p>
 
 <button
-onclick="buyProduct('LosCoins','59.99','link')"
+onclick="buyProduct('LosCoins','59.99','https://pag.ae/81MT53-M4')"
 class="w-full py-5 rounded-2xl gold-button text-lg gold-glow"
 >
 Comprar Agora
@@ -931,7 +977,7 @@ Itens raros e exclusivos para sua conta.
 </p>
 
 <button
-onclick="buyProduct('Cirurgia','24.90','link')"
+onclick="buyProduct('Cirurgia','24.90','https://pag.ae/81MT5iSsK')"
 class="w-full py-5 rounded-2xl gold-button text-lg gold-glow"
 >
 Comprar Agora
@@ -975,11 +1021,11 @@ R$ 89,90
 </div>
 
 <p class="text-zinc-500 mb-8">
-Desbloqueie slots e veículos exclusivos.
+Desbloqueie slots e veículos VIP exclusivos.
 </p>
 
 <button
-onclick="buyProduct('Garagem','89,90','link')"
+onclick="buyProduct('Garagem','89,90','https://pag.ae/81MT5G-B4')"
 class="w-full py-5 rounded-2xl gold-button text-lg gold-glow"
 >
 Comprar Agora
@@ -1206,7 +1252,7 @@ Blindado PREMIUM
 </h3>
 
 <span class="text-yellow-300 text-3xl font-black">
-R$ 129,90
+R$ 199,90
 </span>
 
 </div>
@@ -1218,7 +1264,7 @@ Dura até wipe!
 </p>
 
 <button
-onclick="buyProduct('Full Blindado','129.90','https://pag.ae/81Mzucd9r')"
+onclick="buyProduct('Full Blindado','199.90','https://pag.ae/81MT7JuM5')"
 class="w-full py-5 rounded-2xl gold-button text-lg gold-glow"
 >
 Comprar Agora
@@ -1267,7 +1313,7 @@ Disponivel até o wipe.
 </p>
 
 <button
-onclick="buyProduct('Lamborghini Aventador','149.90','https://pag.ae/81Mzuvnr8')"
+onclick="buyProduct('Corolla Blindado','149.90','https://pag.ae/81MT75TnL')"
 class="w-full py-5 rounded-2xl gold-button text-lg gold-glow"
 >
 Comprar Agora
@@ -1305,7 +1351,7 @@ Nissan Skyline GTR
 </h3>
 
 <span class="text-yellow-300 text-3xl font-black">
-R$ 199,90
+R$ 119,90
 </span>
 
 </div>
@@ -1316,7 +1362,7 @@ Disponivel até o wipe.
 </p>
 
 <button
-onclick="buyProduct('Nissan Skyline GTR','199.90','https://pag.ae/81MzuVQ66')"
+onclick="buyProduct('Nissan Skyline GTR','119.90','https://pag.ae/81MT81cS5')"
 class="w-full py-5 rounded-2xl gold-button text-lg gold-glow"
 >
 Comprar Agora
